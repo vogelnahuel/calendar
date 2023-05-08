@@ -1,0 +1,37 @@
+.days-of-month {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+  }
+  
+  .day {
+    text-align: center;
+    background-color: #dfdfdf;
+    border: 1px solid #ddd;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .day.blank {
+    background-color: transparent;
+  }
+  .days-of-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+  }
+  
+  .day-of-week {
+    text-align: center;
+    font-weight: bold;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    padding: 5px;
+    width: calc(100% / 7);
+    box-sizing: border-box;
+    width: 100px;
+  }
+  .dayImage {
+    position: absolute !important;
+  }

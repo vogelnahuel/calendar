@@ -3,6 +3,8 @@ import React from 'react'
 import { ICalendar, IAxiosCalendar } from './calendar.interface'
 import styles from './Calendar.module.css'
 import Image from 'next/image'
+import { decrement } from '@/redux/features/dashboardSlice'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 
 const getImagesByDate = (images: IAxiosCalendar[]) => {
   const imagesByDate: { [key: string]: IAxiosCalendar } = {}
@@ -15,6 +17,9 @@ const getImagesByDate = (images: IAxiosCalendar[]) => {
 }
 
 export const Calendar = ({ images }: ICalendar) => {
+  const count = useAppSelector((state) => state.dashboardReducer.value)
+  const dispatch = useAppDispatch()
+
   const firstDate = new Date('2023-02-01T00:00:00')
   const blankDays = firstDate.getDay() - 6
 
@@ -27,11 +32,9 @@ export const Calendar = ({ images }: ICalendar) => {
   const imagesByDate = getImagesByDate(images)
 
   const handleImageClick = (image: IAxiosCalendar) => {
-    // Codifica la descripción de la imagen en la URL
-    const encodedDescription = encodeURIComponent(image.explanation)
-    const newTab: Window = window.open(`${image.hdurl}?description=${encodedDescription}`, '_blank') as Window
-    // Redirige al usuario a la URL en la nueva pestaña
-    newTab.location.href = `${image.hdurl}?description=${encodedDescription}`
+    console.log('entree', image)
+    dispatch(decrement())
+    console.log(count)
   }
   return (
     <>

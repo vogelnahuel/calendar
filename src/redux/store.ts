@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import counterReducer from './features/counterSlice'
+import dashboardReducer from './features/dashboardSlice'
 export const store = configureStore({
   reducer: {
-    counterReducer
+    dashboardReducer
   },
   devTools: process.env.NODE_ENV !== 'production'
 })

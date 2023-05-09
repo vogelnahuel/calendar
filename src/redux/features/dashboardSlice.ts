@@ -1,15 +1,18 @@
+import { IAxiosCalendar } from '@/components/calendar.interface'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-type CounterState = {
+type DashboardState = {
   value: number;
+  image: IAxiosCalendar;
 };
 
 const initialState = {
-  value: 0
-} as CounterState
+  value: 0,
+  image: {}
+} as DashboardState
 
-export const counter = createSlice({
-  name: 'counter',
+export const dashboard = createSlice({
+  name: 'dashboard',
   initialState,
   reducers: {
     reset: () => initialState,
@@ -34,5 +37,5 @@ export const {
   decrement,
   decrementByAmount,
   reset
-} = counter.actions
-export default counter.reducer
+} = dashboard.actions
+export default dashboard.reducer

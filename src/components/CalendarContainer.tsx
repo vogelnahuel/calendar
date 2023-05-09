@@ -28,6 +28,8 @@ export const CalendarContainer = () => {
   }
 
   return (
-    <Calendar images={images} generateCalendarDays={generateCalendarDays} />
+    <>
+      <Calendar images={images} generateCalendarDays={generateCalendarDays} />
+    </>
   )
 }

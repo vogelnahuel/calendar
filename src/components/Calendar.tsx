@@ -26,6 +26,13 @@ export const Calendar = ({ images }: ICalendar) => {
 
   const imagesByDate = getImagesByDate(images)
 
+  const handleImageClick = (image: IAxiosCalendar) => {
+    // Codifica la descripción de la imagen en la URL
+    const encodedDescription = encodeURIComponent(image.explanation)
+    const newTab: Window = window.open(`${image.hdurl}?description=${encodedDescription}`, '_blank') as Window
+    // Redirige al usuario a la URL en la nueva pestaña
+    newTab.location.href = `${image.hdurl}?description=${encodedDescription}`
+  }
   return (
     <>
       {images.length > 0
@@ -51,6 +58,7 @@ export const Calendar = ({ images }: ICalendar) => {
                   className={`${styles.day} ${day?.getMonth() === 1 ? '' : styles.blank} ${
                     image ? styles.selected : ''
                   }`}
+                  onClick={() => handleImageClick(image)}
                 >
                   <p className={styles.dayImage}>{day?.getDate()}</p>
                   {image && (

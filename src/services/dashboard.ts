@@ -1,4 +1,4 @@
-import { IAxiosCalendar } from '@/components/calendar.interface'
+import { IAxiosCalendar } from '@/components/calendar/calendar.interface'
 import axios from 'axios'
 
 export const getImages = async (start:string, end:string):Promise<IAxiosCalendar[]> => {

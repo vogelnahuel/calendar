@@ -1,41 +1,47 @@
-import { IAxiosCalendar } from '@/components/calendar.interface'
+import { IAxiosCalendar } from '@/components/calendar/calendar.interface'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-type DashboardState = {
-  value: number;
-  image: IAxiosCalendar;
+export type DashboardState = {
+  imageSelected: IAxiosCalendar;
+  images: IAxiosCalendar[];
+  isOpenModal: boolean;
 };
 
-const initialState = {
-  value: 0,
-  image: {}
-} as DashboardState
+const initialState: DashboardState = {
+  imageSelected: {
+    copyright: '',
+    date: '',
+    explanation: '',
+    hdurl: '',
+    image: '',
+    title: '',
+    url: ''
+  },
+  images: [],
+  isOpenModal: false
+}
 
 export const dashboard = createSlice({
   name: 'dashboard',
   initialState,
   reducers: {
     reset: () => initialState,
-    increment: (state) => {
-      state.value += 1
+    setImageSelected: (state, action: PayloadAction<IAxiosCalendar>) => {
+      state.imageSelected = action.payload
     },
-    decrement: (state) => {
-      state.value -= 1
+    setImagesState: (state, action: PayloadAction<IAxiosCalendar[]>) => {
+      state.images = action.payload
     },
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload
-    },
-    decrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value -= action.payload
+    setIsOpenModal: (state, action: PayloadAction<boolean>) => {
+      state.isOpenModal = action.payload
     }
   }
 })
 
 export const {
-  increment,
-  incrementByAmount,
-  decrement,
-  decrementByAmount,
+  setIsOpenModal,
+  setImageSelected,
+  setImagesState,
   reset
 } = dashboard.actions
 export default dashboard.reducer

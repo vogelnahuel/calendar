@@ -1,5 +1,5 @@
 'use client'
-import { CalendarContainer } from '@/components/CalendarContainer'
+import { CalendarContainer } from '@/components/calendar/CalendarContainer'
 import styles from './page.module.css'
 
 export default function Home () {

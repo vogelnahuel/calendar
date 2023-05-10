@@ -1,28 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { ICalendar } from './calendar.interface'
 import styles from './Calendar.module.css'
 import Image from 'next/image'
 import Modal from '../Modal/Modal'
 import { ImageContainer } from '../image/ImageContainer'
 
-export const Calendar = ({ images, daysOfMonth, imagesByDate, handleImageClick, setIsOpenModal, isOpenModal }: ICalendar) => {
-  const [windowWidth, setWindowWidth] = useState<number>(0)
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth)
-    }
-
-    // Registra un event listener para detectar cambios de tamaño de ventana
-    window.addEventListener('resize', handleResize)
-
-    // Establece el ancho inicial de la ventana
-    setWindowWidth(window.innerWidth)
-
-    // Limpia el event listener cuando el componente se desmonta
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
+export const Calendar = ({ images, daysOfMonth, imagesByDate, handleImageClick, setIsOpenModal, isOpenModal, windowWidth }: ICalendar) => {
   return (
     <>
       {images.length > 0

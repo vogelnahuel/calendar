@@ -17,4 +17,5 @@ export interface ICalendar {
     handleImageClick: (image: IAxiosCalendar, day: Date) => void
     setIsOpenModal: () => { payload: boolean; type: 'dashboard/setIsOpenModal'; }
     isOpenModal: boolean
+    windowWidth: number
 }

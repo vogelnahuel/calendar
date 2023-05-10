@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 export const CalendarContainer = () => {
   const firstDate: Date = new Date('2023-02-01T00:00:00')
   const blankDays: number = firstDate.getDay() - 6
-
+  const [windowWidth, setWindowWidth] = useState<number>(0)
   const [images, setImages] = useState<IAxiosCalendar[]>([])
   const dispatch = useAppDispatch()
   const dashboard: DashboardState = useAppSelector((state) => state.dashboardReducer)
@@ -58,11 +58,23 @@ export const CalendarContainer = () => {
 
   useEffect(() => {
     getImag()
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    setWindowWidth(window.innerWidth)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
   }, [getImag])
 
   return (
     <>
       <Calendar
+        windowWidth={windowWidth}
         images={images}
         daysOfMonth={daysOfMonth}
         imagesByDate={imagesByDate}

@@ -5,10 +5,11 @@ interface ModalProps {
   onClose: () => void;
   // eslint-disable-next-line no-undef
   children: JSX.Element;
+  isOpen: boolean;
 }
 
 // patron Higher-Order Components
-const Modal: React.FC<ModalProps> = ({ onClose, children }) => {
+const Modal: React.FC<ModalProps> = ({ onClose, children, isOpen }) => {
   useEffect(() => {
     const handleEscapeKey = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -23,7 +24,7 @@ const Modal: React.FC<ModalProps> = ({ onClose, children }) => {
     }
   }, [onClose])
   return (
-    <div className={styles.modal}>
+    <div className={`${styles.modal} ${isOpen ? styles.modalOpen : ''}`}>
       <div className={styles.modalContent}>
         <span className={styles.close} onClick={onClose}>
           &times;

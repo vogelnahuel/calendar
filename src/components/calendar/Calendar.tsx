@@ -44,7 +44,7 @@ export const Calendar = ({ images, daysOfMonth, imagesByDate, handleImageClick, 
             </div>
           </div>
           )
-        : null}
+        : <div>...Cargando</div>}
       {isOpenModal && (
         <Modal onClose={() => setIsOpenModal()}>
           <ImageContainer />

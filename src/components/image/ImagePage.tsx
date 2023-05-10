@@ -10,14 +10,16 @@ const ImagePage = ({ dashboard }: IPageImage) => {
         <Image
           src={dashboard?.hdurl || ''}
           alt={dashboard?.title || ''}
-          width={400}
-          height={400}
+          width={200}
+          height={200}
           sizes='(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
               33vw'
-          style={{ width: '100%' }}
+          style={{ width: '100%', height: '20%' }}
         />
-        <p>Description: {dashboard.explanation}</p>
+        <div className={styles.scroll}>
+          <p style={{ fontSize: '15px' }}>Description: {dashboard.explanation}</p>
+        </div>
       </div>
     </div>
   )

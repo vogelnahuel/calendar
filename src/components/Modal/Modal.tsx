@@ -7,6 +7,7 @@ interface ModalProps {
   children: JSX.Element;
 }
 
+// patron Higher-Order Components
 const Modal: React.FC<ModalProps> = ({ onClose, children }) => {
   useEffect(() => {
     const handleEscapeKey = (event: KeyboardEvent) => {

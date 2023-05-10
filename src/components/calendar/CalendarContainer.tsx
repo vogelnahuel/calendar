@@ -5,7 +5,7 @@ import { getImages } from '@/services/dashboard'
 import { IAxiosCalendar } from './calendar.interface'
 import { DashboardState, setImageSelected, setImagesState, setIsOpenModal } from '@/redux/features/dashboardSlice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-
+// patron presentational and container components
 export const CalendarContainer = () => {
   const firstDate: Date = new Date('2023-02-01T00:00:00')
   const blankDays: number = firstDate.getDay() - 6

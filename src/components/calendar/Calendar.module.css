@@ -8,17 +8,20 @@
     text-align: center;
     background-color: #dfdfdf;
     border: 1px solid #ddd;
-    padding: 5px;
+    padding: 0px;
     cursor: pointer;
   }
   
   .day.blank {
     background-color: transparent;
   }
-  .days-of-week {
+  .days-of-week-container {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 5px;
+    text-align: center;
+  }
+  .days-of-week {
     text-align: center;
   }
   
@@ -28,10 +31,38 @@
     background-color: #f5f5f5;
     border: 1px solid #ddd;
     padding: 5px;
-    width: calc(100% / 7);
     box-sizing: border-box;
     width: 100px;
   }
   .dayImage {
-    position: absolute !important;
+    position: absolute;
+  }
+  
+  @media (max-width: 800px) {
+    .days-of-week-container{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .day-of-week{
+      flex-basis: calc((80% - 0px) / 7); /* Ajusta el tamaño de cada día */
+      text-align: center;
+      border: 1px solid #ddd;
+      padding: 5px;
+      cursor: pointer;
+    }
+    .days-of-month {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    
+    .day {
+      flex-basis: calc((100% - 20px) / 7); /* Ajusta el tamaño de cada día */
+      text-align: center;
+      background-color: #dfdfdf;
+      border: 1px solid #ddd;
+      padding: 0px;
+      cursor: pointer;
+    }
   }
